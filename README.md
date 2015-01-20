@@ -1,4 +1,6 @@
 *** Bro3 MapView ***
+https://github.com/Griffith-m12/bro3mapview
+
 ブラウザ三国志mixi 1サーバの地図を表示。
 
 倍率: 1～8倍
