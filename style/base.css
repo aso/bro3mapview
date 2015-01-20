@@ -1,0 +1,64 @@
+body {
+    background-color: gray;
+    color: white;
+    margin:0;
+}
+
+#mainContent {
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: xx-large;
+	font-weight: bold;
+	background-color: #E3F0FB;
+	border-radius: 4px;
+	padding: 10px;
+	text-align: center;
+}
+
+.buttonStyle {
+	border-radius: 4px;
+	border: thin solid #F0E020;
+	padding: 5px;
+	background-color: #F8F094;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: bold;
+	color: #663300;
+	width: 75px;
+}
+
+.buttonStyle:hover {
+	border: thin solid #FFCC00;
+	background-color: #FCF9D6;
+	color: #996633;
+	cursor: pointer;
+}
+.buttonStyle:active {
+	border: thin solid #99CC00;
+	background-color: #F5FFD2;
+	color: #669900;
+	cursor: pointer;
+}
+
+.right {
+	float: right;
+}
+
+#field {
+    /**
+     * Position relative so that canvas elements
+     * inside of it will be relative to the parent
+     */
+    position: relative;
+}
+ 
+#field canvas {
+    /**
+     * Position absolute provides canvases to be able
+     * to be layered on top of each other
+     * Be sure to remember a z-index!
+     */
+    position: absolute;
+}
+
+canvas #cOvr {
+    background-color: transparent;
+}
