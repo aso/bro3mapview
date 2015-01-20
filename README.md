@@ -1,5 +1,5 @@
 *** Bro3 MapView ***
-https://github.com/Griffith-m12/bro3mapview
+http://griffith-m12.github.io/bro3mapview/
 
 ブラウザ三国志mixi 1サーバの地図を表示。
 
