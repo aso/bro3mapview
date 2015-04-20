@@ -62,6 +62,13 @@
           _isTouch = true;
           _startCoords = {x:touch.clientX - _mapOffset.x * _zoom, y:touch.clientY - _mapOffset.y * _zoom};
           panning(touch.clientX, touch.clientY);
+          var _loc = {};
+          _loc.x = -mapSize + Math.floor(touch.clientX / _zoom - _mapOffset.x);
+          _loc.y = mapSize - Math.floor(touch.clientX / _zoom - _mapOffset.y);
+          _loc.x = Math.min(mapSize, Math.max(-mapSize, _loc.x));
+          _loc.y = Math.min(mapSize, Math.max(-mapSize, _loc.y));
+          _loc.textContent = ["(", _loc.x, ",", _loc.y, ")"].join('');
+          
         };
         
         function evTouchMove(evt) {
