@@ -23,7 +23,11 @@
             _canvas.onmousedown = evMouseDown;
             _canvas.onmouseout = evMouseOut;
             _canvas.ondblclick  = evJumpToBigMap;
-            _canvas.onselectstart = function(){ return false; };
+            _canvas.onselectstart  = function(){ return false; };
+            _canvas.ontouchstart   = evTouchStart;
+            _canvas.ontouchend     = evTouchEnd;
+            _canvas.ontouchcancel  = evTouchEnd;
+            _canvas.ontouchmove    = evTouchMove;
             _mouseOffset = _canvas.getBoundingClientRect();
             _zoom        = 1;
             _mapOffset   = {"x": 0, "y": 0};
@@ -51,31 +55,25 @@
         var resizeQueue  = null
           , queueWait    = 300;
         
-        _canvas.addEventListener('touchstart', function(event) {
+        function evTouchStart(evt) {
           console.log('touchstart');
-          event.preventDefault();
-          var touch = event.touches[0];
+          evt.preventDefault();
+          var touch = evt.touches[0];
           _isTouch = true;
           _startCoords = {x:touch.clientX - _mapOffset.x * _zoom, y:touch.clientY - _mapOffset.y * _zoom};
           panning(touch.clientX, touch.clientY);
         }, false);
         
-        _canvas.addEventListener('touchmove', function(event) {
+        function evMouseMove(evt) {
           console.log('touchmove');
-          event.preventDefault();
-          var touch = event.touches[0];
+          evt.preventDefault();
+          var touch = evt.touches[0];
           if (_isTouch) {
             panning(touch.clientX, touch.clientY);
           }
         }, false);
         
-        _canvas.addEventListener('touchcancel', function(event) {
-          if (_isTouch) {
-            _isTouch = false;
-          }
-        }, false);
-        
-        _canvas.addEventListener('touchend', function(event) {
+        function evTouchEnd(evt) {
           if (_isTouch) {
             _isTouch = false;
           }
