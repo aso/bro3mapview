@@ -10,7 +10,7 @@
     <meta name="keywords" content=""/>
     <script>
         var mapSize = 800;
-        onl = function() {
+        onload = function() {
             console.log('onLoad');
             _canvas      = document.getElementById("cMap");
             _loc         = document.getElementById("location");
@@ -64,7 +64,7 @@
           panning(touch.clientX, touch.clientY);
         };
         
-        function evMouseMove(evt) {
+        function evTouchMove(evt) {
           console.log('touchmove');
           evt.preventDefault();
           var touch = evt.touches[0];
@@ -244,7 +244,7 @@
     </script>
 </head>
 
-<body onload="onl()">
+<body>
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NJ3PGF"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
