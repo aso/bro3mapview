@@ -60,6 +60,7 @@
         }, false);
         
         _canvas.addEventListener('touchmove', function(event) {
+          console.log('touchmove');
           event.preventDefault();
           var touch = event.touches[0];
           if (_isTouch) {
@@ -193,8 +194,8 @@
             try {
                 var ctx = _canvas.getContext('2d');
                 if(ctx.imageSmoothingEnabled) {ctx.imageSmoothingEnabled = false;}
-                if(ctx.webkitImageSmoothingEnabled) {ctx.webkitImageSmoothingEnabled = false;}
-                if(ctx.mozImageSmoothingEnabled) {ctx.mozImageSmoothingEnabled = false;}
+                else if(ctx.webkitImageSmoothingEnabled) {ctx.webkitImageSmoothingEnabled = false;}
+                else if(ctx.mozImageSmoothingEnabled) {ctx.mozImageSmoothingEnabled = false;}
                 
                 function putMap() {
                     document.getElementById("fadingBarsG").style.display = 'none';
