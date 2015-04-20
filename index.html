@@ -52,6 +52,7 @@
           , queueWait    = 300;
         
         _canvas.addEventListener('touchstart', function(event) {
+          console.log('touchstart');
           event.preventDefault();
           var touch = event.touches[0];
           _isTouch = true;
@@ -71,14 +72,12 @@
         _canvas.addEventListener('touchcancel', function(event) {
           if (_isTouch) {
             _isTouch = false;
-            panning(touch.clientX, touch.clientY);
           }
         }, false);
         
         _canvas.addEventListener('touchend', function(event) {
           if (_isTouch) {
             _isTouch = false;
-            panning(touch.clientX, touch.clientY);
           }
         }, false);
         
