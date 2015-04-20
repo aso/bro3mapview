@@ -62,7 +62,7 @@
           _isTouch = true;
           _startCoords = {x:touch.clientX - _mapOffset.x * _zoom, y:touch.clientY - _mapOffset.y * _zoom};
           panning(touch.clientX, touch.clientY);
-        }, false);
+        };
         
         function evMouseMove(evt) {
           console.log('touchmove');
@@ -71,13 +71,13 @@
           if (_isTouch) {
             panning(touch.clientX, touch.clientY);
           }
-        }, false);
+        };
         
         function evTouchEnd(evt) {
           if (_isTouch) {
             _isTouch = false;
           }
-        }, false);
+        };
         
         window.addEventListener('resize', function() {
             clearTimeout(resizeQueue);
@@ -86,7 +86,7 @@
                 expandCanvas();
                 draw();
             }, queueWait);
-        }, false);
+        };
         
         function expandCanvas(){
             var b = document.body;
