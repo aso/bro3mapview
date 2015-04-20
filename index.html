@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no" />
     <title>bro3MapView</title>
     <link rel="stylesheet" type="text/css" href="./style/base.css" />
     <link rel="stylesheet" type="text/css" href="./style/bro3mapview.css" />
@@ -9,7 +10,7 @@
     <meta name="keywords" content=""/>
     <script>
         var mapSize = 800;
-        onload = function() {
+        onl = function() {
             console.log('onLoad');
             _canvas      = document.getElementById("cMap");
             _loc         = document.getElementById("location");
@@ -49,7 +50,37 @@
         var _startCoords = {};
         var resizeQueue  = null
           , queueWait    = 300;
-         
+        
+        _canvas.addEventListener('touchstart', function(event) {
+          event.preventDefault();
+          var touch = event.touches[0];
+          _isTouch = true;
+          _startCoords = {x:touch.clientX - _mapOffset.x * _zoom, y:touch.clientY - _mapOffset.y * _zoom};
+          panning(touch.clientX, touch.clientY);
+        }, false);
+        
+        _canvas.addEventListener('touchmove', function(event) {
+          event.preventDefault();
+          var touch = event.touches[0];
+          if (_isTouch) {
+            panning(touch.clientX, touch.clientY);
+          }
+        }, false);
+        
+        _canvas.addEventListener('touchcancel', function(event) {
+          if (_isTouch) {
+            _isTouch = false;
+            panning(touch.clientX, touch.clientY);
+          }
+        }, false);
+        
+        _canvas.addEventListener('touchend', function(event) {
+          if (_isTouch) {
+            _isTouch = false;
+            panning(touch.clientX, touch.clientY);
+          }
+        }, false);
+        
         window.addEventListener('resize', function() {
             clearTimeout(resizeQueue);
             resizeQueue = setTimeout(function() {
@@ -215,7 +246,7 @@
     </script>
 </head>
 
-<body>
+<body onload="onl()">
 <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NJ3PGF"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -239,7 +270,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <option id="Zoom8" value="8">8倍</option>
         </select>
         <input id="chkViewNPC" type="checkbox" name="viewNpcPower" onclick="draw()"><label for="chkViewNPC">NPC fort Level</label></input>
-        <span class="right">by <a href="https://github.com/Griffith-m12/bro3mapview">GriBot</a></a></span>
+        <span class="right">ブラ三レーダー by <a href="https://github.com/Griffith-m12/bro3mapview">GriBot</a></a></span>
     </div>
         
     <div id="field">
