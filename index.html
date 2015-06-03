@@ -114,7 +114,7 @@
             _mapOffset.x = Math.floor((offsetX -_startCoords.x) / _zoom);
             _mapOffset.y = Math.floor((offsetY -_startCoords.y) / _zoom);
             
-            var lmtX = Math.floor(-mapSize*2+1 + _canvas.width / _zoom);
+            var lmtX = Math.floor(-mapSize*2+3 + _canvas.width / _zoom);
             var lmtY = Math.floor(-mapSize*2+1 + _canvas.height / _zoom);
             _mapOffset.x = Math.min(0, Math.max(lmtX, _mapOffset.x));
             _mapOffset.y = Math.min(0, Math.max(lmtY, _mapOffset.y));
